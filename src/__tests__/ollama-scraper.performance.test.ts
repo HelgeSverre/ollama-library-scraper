@@ -139,7 +139,7 @@ describe('OllamaScraper Performance Tests', () => {
       const listingHtml = FixtureLoader.loadHtml('library', 'listing-newest.html');
 
       // Setup mock to handle both success and failure
-      mockFetch.mockImplementation((url) => {
+      mockFetch.mockImplementation((url: any) => {
         const urlStr = typeof url === 'string' ? url : url.toString();
         if (urlStr.includes('/library') && !urlStr.includes('/library/')) {
           return Promise.resolve(createMockResponse(listingHtml));

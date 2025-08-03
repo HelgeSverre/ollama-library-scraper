@@ -22,7 +22,10 @@
       "Bash(ls:*)",
       "Bash(git add:*)",
       "Bash(make test-local-check:*)",
-      "Bash(touch:*)"
+      "Bash(touch:*)",
+      "Bash(npm run test:ci:*)",
+      "Bash(make test-local-ci:*)",
+      "Bash(git commit:*)"
     ],
     "deny": []
   }
