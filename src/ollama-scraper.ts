@@ -126,7 +126,7 @@ class OllamaScraper {
 
         // Try to find description in a more structured way
         let description = '';
-        
+
         // Look for a description element (often in a p or div after the link)
         const $descElement = $li.find('p').first();
         if ($descElement.length) {
@@ -134,7 +134,9 @@ class OllamaScraper {
         } else {
           // Fallback: extract from full text
           const fullText = $li.text();
-          const descriptionMatch = fullText.match(new RegExp(`${modelName}\\s+(.+?)(?:\\n|$)`, 's'));
+          const descriptionMatch = fullText.match(
+            new RegExp(`${modelName}\\s+(.+?)(?:\\n|$)`, 's')
+          );
           description = descriptionMatch ? descriptionMatch[1].trim() : '';
         }
 
@@ -235,7 +237,7 @@ class OllamaScraper {
           return false;
         }
       });
-      
+
       // Fallback: look for "Updated" text
       if (!lastUpdated) {
         const mainContent = $('main').text();
@@ -372,26 +374,34 @@ class OllamaScraper {
         // Get the container that has the tag information for this specific tag
         // Strategy: look for the closest text that contains size info
         let text = '';
-        
+
         // First, try the immediate next sibling (most common case)
         const $nextSibling = $link.next();
         if ($nextSibling.length) {
           const siblingText = $nextSibling.text();
-          if (siblingText.includes('GB') || siblingText.includes('MB') || siblingText.includes('TB')) {
+          if (
+            siblingText.includes('GB') ||
+            siblingText.includes('MB') ||
+            siblingText.includes('TB')
+          ) {
             text = siblingText;
           }
         }
-        
+
         // If next sibling didn't work, try walking up parent containers but with limited scope
         if (!text) {
           let $container = $link.parent();
           let maxDepth = 3; // Reduced depth to avoid getting entire body
-          
+
           while ($container.length && maxDepth > 0) {
             const containerText = $container.text();
             // Only use container if it's reasonably small (likely contains just this tag's info)
-            if ((containerText.includes('GB') || containerText.includes('MB') || containerText.includes('TB')) 
-                && containerText.length < 200) {
+            if (
+              (containerText.includes('GB') ||
+                containerText.includes('MB') ||
+                containerText.includes('TB')) &&
+              containerText.length < 200
+            ) {
               text = containerText;
               break;
             }
@@ -399,17 +409,22 @@ class OllamaScraper {
             maxDepth--;
           }
         }
-        
+
         // If still no specific text found, try to find the immediate following text
         if (!text) {
           // Look for the very next element that might contain size info
           let $current = $link;
-          for (let i = 0; i < 3; i++) { // Only check next few elements
+          for (let i = 0; i < 3; i++) {
+            // Only check next few elements
             $current = $current.next();
             if (!$current.length) break;
-            
+
             const elementText = $current.text();
-            if (elementText.includes('GB') || elementText.includes('MB') || elementText.includes('TB')) {
+            if (
+              elementText.includes('GB') ||
+              elementText.includes('MB') ||
+              elementText.includes('TB')
+            ) {
               // Only use if it's a short text (likely just one tag's info)
               if (elementText.length < 100) {
                 text = elementText;

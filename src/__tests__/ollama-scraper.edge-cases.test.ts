@@ -390,14 +390,14 @@ describe('OllamaScraper Edge Cases', () => {
 
       const tags = await scraper.getModelTags('test-model');
       expect(tags).toHaveLength(3);
-      
+
       // Find tags by name to avoid order issues
       const tinyTag = tags.find(t => t.name === 'tiny');
       const hugeTag = tags.find(t => t.name === 'huge');
       const unknownTag = tags.find(t => t.name === 'unknown');
-      
+
       expect(tinyTag?.size).toBe('500MB');
-      expect(hugeTag?.size).toBe('1.5TB'); // Should handle TB  
+      expect(hugeTag?.size).toBe('1.5TB'); // Should handle TB
       expect(unknownTag?.size).toBe(''); // Should not match '? KB'
     });
   });

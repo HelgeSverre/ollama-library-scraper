@@ -166,7 +166,7 @@ describe('OllamaScraper Performance Tests', () => {
     it('should handle rate limiting responses', async () => {
       // Clear any existing mocks first
       mockFetch.mockClear();
-      
+
       // Mock rate limiting response (429 Too Many Requests)
       mockFetch.mockResolvedValue({
         ok: false,
@@ -183,7 +183,9 @@ describe('OllamaScraper Performance Tests', () => {
         },
       });
 
-      await expect(scraper.getModelListing()).rejects.toThrow('Failed to fetch model listing: Error: HTTP error! status: 429');
+      await expect(scraper.getModelListing()).rejects.toThrow(
+        'Failed to fetch model listing: Error: HTTP error! status: 429'
+      );
     });
 
     it('should handle server errors gracefully', async () => {
