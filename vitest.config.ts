@@ -18,7 +18,7 @@ export default defineConfig({
         lines: 80,
         functions: 75,
         branches: 70,
-        statements: 80
+        statements: 80,
       },
       exclude: [
         'node_modules/**',
@@ -32,22 +32,18 @@ export default defineConfig({
         'src/__tests__/**',
         'src/**/*.test.*',
         'src/**/*.spec.*',
-        'src/index.ts'
+        'src/index.ts',
       ],
-      include: [
-        'src/**/*.ts'
-      ]
+      include: ['src/**/*.ts'],
     },
     // Test file patterns
-    include: [
-      'src/**/*.{test,spec}.ts'
-    ],
+    include: ['src/**/*.{test,spec}.ts'],
     // Setup files (none required currently)
     setupFiles: [],
     // Reporter configuration
     reporters: process.env.CI ? ['junit', 'github-actions'] : ['verbose'],
     outputFile: {
-      junit: './test-results.xml'
+      junit: './test-results.xml',
     },
-  }
+  },
 });

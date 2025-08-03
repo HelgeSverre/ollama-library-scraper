@@ -12,9 +12,7 @@
     "digest": "72fc3c2b99dc",
     "modifiedAt": "TIMESTAMP_PLACEHOLDER",
     "inputType": "Text",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": ["latest"]
   },
   {
     "name": "13b",

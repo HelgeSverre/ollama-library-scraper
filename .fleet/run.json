@@ -13,7 +13,7 @@
     },
     {
       "name": "Debug Current Test File",
-      "type": "node", 
+      "type": "node",
       "programParameters": "run $FILE_PATH$ --reporter=verbose",
       "program": "node_modules/vitest/vitest.mjs",
       "workingDirectory": "$PROJECT_DIR$",
@@ -39,7 +39,7 @@
     },
     {
       "name": "Run Scraper (Built)",
-      "type": "npm", 
+      "type": "npm",
       "command": "start",
       "workingDirectory": "$PROJECT_DIR$",
       "envFile": ".env"
@@ -59,7 +59,7 @@
     {
       "name": "Test with Coverage",
       "type": "npm",
-      "command": "test:coverage", 
+      "command": "test:coverage",
       "workingDirectory": "$PROJECT_DIR$"
     },
     {
@@ -99,7 +99,7 @@
       "workingDirectory": "$PROJECT_DIR$"
     },
     {
-      "name": "Generate Model Fixtures", 
+      "name": "Generate Model Fixtures",
       "type": "npm",
       "command": "fixtures:generate:models",
       "workingDirectory": "$PROJECT_DIR$"

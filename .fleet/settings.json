@@ -25,17 +25,8 @@
     "tabSize": 2,
     "insertSpaces": true
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "coverage",
-    ".git"
-  ],
+  "exclude": ["node_modules", "dist", "coverage", ".git"],
   "fileWatching": {
-    "exclude": [
-      "**/node_modules/**",
-      "**/dist/**", 
-      "**/coverage/**"
-    ]
+    "exclude": ["**/node_modules/**", "**/dist/**", "**/coverage/**"]
   }
 }

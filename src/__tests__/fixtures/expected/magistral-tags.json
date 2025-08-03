@@ -12,9 +12,7 @@
     "digest": "27bcbbf6d324",
     "modifiedAt": "TIMESTAMP_PLACEHOLDER",
     "inputType": "Text",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": ["latest"]
   },
   {
     "name": "24b-small-2506-q4_K_M",

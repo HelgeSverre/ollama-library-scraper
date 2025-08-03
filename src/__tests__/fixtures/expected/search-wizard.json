@@ -2,9 +2,7 @@
   {
     "name": "wizardlm2",
     "description": "State of the art large language model from Microsoft AI with improved performance on complex chat, multilingual, reasoning and agent use cases.",
-    "parameters": [
-      "7b"
-    ],
+    "parameters": ["7b"],
     "pulls": "386.8K",
     "tags": 22,
     "lastUpdated": "TIMESTAMP_PLACEHOLDER",
@@ -13,11 +11,7 @@
   {
     "name": "wizard-vicuna-uncensored",
     "description": "Wizard Vicuna Uncensored is a 7B, 13B, and 30B parameter model based on Llama 2 uncensored by Eric Hartford.",
-    "parameters": [
-      "7b",
-      "13b",
-      "30b"
-    ],
+    "parameters": ["7b", "13b", "30b"],
     "pulls": "224.4K",
     "tags": 49,
     "lastUpdated": "TIMESTAMP_PLACEHOLDER",
@@ -26,9 +20,7 @@
   {
     "name": "wizardcoder",
     "description": "State-of-the-art code generation model",
-    "parameters": [
-      "33b"
-    ],
+    "parameters": ["33b"],
     "pulls": "133K",
     "tags": 67,
     "lastUpdated": "TIMESTAMP_PLACEHOLDER",
@@ -37,11 +29,7 @@
   {
     "name": "wizard-math",
     "description": "Model focused on math and logic problems",
-    "parameters": [
-      "7b",
-      "13b",
-      "70b"
-    ],
+    "parameters": ["7b", "13b", "70b"],
     "pulls": "109K",
     "tags": 64,
     "lastUpdated": "TIMESTAMP_PLACEHOLDER",
@@ -59,9 +47,7 @@
   {
     "name": "wizardlm-uncensored",
     "description": "Uncensored version of Wizard LM model",
-    "parameters": [
-      "13b"
-    ],
+    "parameters": ["13b"],
     "pulls": "72.9K",
     "tags": 18,
     "lastUpdated": "TIMESTAMP_PLACEHOLDER",
@@ -70,9 +56,7 @@
   {
     "name": "wizard-vicuna",
     "description": "Wizard Vicuna is a 13B parameter model based on Llama 2 trained by MelodysDreamj.",
-    "parameters": [
-      "13b"
-    ],
+    "parameters": ["13b"],
     "pulls": "33.6K",
     "tags": 17,
     "lastUpdated": "TIMESTAMP_PLACEHOLDER",

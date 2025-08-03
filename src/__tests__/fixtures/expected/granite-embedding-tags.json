@@ -12,9 +12,7 @@
     "digest": "eb4c533ba6f7",
     "modifiedAt": "TIMESTAMP_PLACEHOLDER",
     "inputType": "Text",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": ["latest"]
   },
   {
     "name": "278m",

@@ -42,39 +42,47 @@ node examples/simple-example.js
 The `demo.js` script showcases all main features of the ollama-library-scraper library:
 
 ### 1. Basic Model Listing
+
 - Fetch all available models from the Ollama library
 - Get basic information: name, description, parameters, downloads, etc.
 
 ### 2. Search Functionality
+
 - Search for models by keyword (e.g., "llama", "qwen")
 - Filter results based on model names and descriptions
 
 ### 3. Sort Options
+
 - **newest**: Models sorted by most recently updated
 - **most-popular**: Models sorted by download count
 - **alphabetical**: Models sorted alphabetically by name
 - **oldest**: Models sorted by oldest first
 
 ### 4. Combined Search and Sort
+
 - Combine search queries with sort options
 - Example: Search for "qwen" models sorted by newest
 
 ### 5. Model Details
+
 - Get comprehensive information about specific models
 - Includes model variants, sizes, capabilities
 - README content (both HTML and Markdown formats)
 - Download statistics and update dates
 
 ### 6. Model Tags
+
 - List all available tags/versions for a model
 - Get metadata for each tag: size, digest, context window
 - Information about input types and capabilities
 
 ### 7. Specific Tag Details
+
 - Get detailed information for a specific model tag
 - Useful for examining particular model variants
 
 ### 8. Capability Analysis
+
 - Filter and analyze models by capabilities:
   - **Vision**: Models that can process images
   - **Tools**: Models that support function calling
@@ -131,20 +139,19 @@ Use the demo as a starting point for your own scripts. Here's a minimal example:
 const { OllamaScraper } = require('../dist/index.js');
 
 async function main() {
-    const scraper = new OllamaScraper();
-    
-    try {
-        // Get popular models
-        const models = await scraper.getModelListing({ 
-            sort: 'most-popular' 
-        });
-        
-        console.log(`Found ${models.length} models`);
-        console.log(JSON.stringify(models.slice(0, 5), null, 2));
-        
-    } catch (error) {
-        console.error('Error:', error.message);
-    }
+  const scraper = new OllamaScraper();
+
+  try {
+    // Get popular models
+    const models = await scraper.getModelListing({
+      sort: 'most-popular',
+    });
+
+    console.log(`Found ${models.length} models`);
+    console.log(JSON.stringify(models.slice(0, 5), null, 2));
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
 }
 
 main();

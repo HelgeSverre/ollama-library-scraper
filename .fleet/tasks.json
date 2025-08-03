@@ -10,7 +10,7 @@
     },
     {
       "name": "Test",
-      "command": "npm", 
+      "command": "npm",
       "args": ["test"],
       "workingDirectory": "$PROJECT_DIR$",
       "group": "test",
@@ -82,7 +82,7 @@
     },
     {
       "name": "Make - Test",
-      "command": "make", 
+      "command": "make",
       "args": ["test"],
       "workingDirectory": "$PROJECT_DIR$",
       "group": "test"
