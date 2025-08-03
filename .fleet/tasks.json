@@ -1,0 +1,112 @@
+{
+  "tasks": [
+    {
+      "name": "Build",
+      "command": "npm",
+      "args": ["run", "build"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "build",
+      "isDefault": true
+    },
+    {
+      "name": "Test",
+      "command": "npm", 
+      "args": ["test"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "test",
+      "isDefault": true
+    },
+    {
+      "name": "Test with Coverage",
+      "command": "npm",
+      "args": ["run", "test:coverage"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "test"
+    },
+    {
+      "name": "Watch Tests",
+      "command": "npm",
+      "args": ["run", "test:watch"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "test",
+      "isBackground": true
+    },
+    {
+      "name": "Format Code",
+      "command": "npm",
+      "args": ["run", "format"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "build"
+    },
+    {
+      "name": "Check Formatting",
+      "command": "npm",
+      "args": ["run", "format:check"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "test"
+    },
+    {
+      "name": "Dev - Run Scraper",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "run"
+    },
+    {
+      "name": "Generate Fixtures",
+      "command": "npm",
+      "args": ["run", "fixtures:generate"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "build"
+    },
+    {
+      "name": "Clean",
+      "command": "npm",
+      "args": ["run", "clean"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "build"
+    },
+    {
+      "name": "Test Local CI",
+      "command": "npm",
+      "args": ["run", "test:local"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "test"
+    },
+    {
+      "name": "Make - Build",
+      "command": "make",
+      "args": ["build"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "build"
+    },
+    {
+      "name": "Make - Test",
+      "command": "make", 
+      "args": ["test"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "test"
+    },
+    {
+      "name": "Make - Clean",
+      "command": "make",
+      "args": ["clean"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "build"
+    },
+    {
+      "name": "Docker - Build Test Image",
+      "command": "make",
+      "args": ["docker-build"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "build"
+    },
+    {
+      "name": "Docker - Run Tests",
+      "command": "make",
+      "args": ["docker-test"],
+      "workingDirectory": "$PROJECT_DIR$",
+      "group": "test"
+    }
+  ]
+}

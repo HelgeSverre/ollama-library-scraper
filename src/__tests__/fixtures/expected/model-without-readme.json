@@ -1,0 +1,22 @@
+{
+  "name": "test-model",
+  "description": "Magistral is a small, efficient reasoning model with 24B parameters.",
+  "downloads": "0",
+  "lastUpdated": "TIMESTAMP_PLACEHOLDER",
+  "models": [
+    {
+      "name": "latest",
+      "size": "14GB",
+      "contextWindow": "39K",
+      "inputType": "Text",
+      "lastUpdated": ""
+    },
+    {
+      "name": "24b",
+      "size": "14GB",
+      "contextWindow": "39K",
+      "inputType": "Text",
+      "lastUpdated": ""
+    }
+  ]
+}

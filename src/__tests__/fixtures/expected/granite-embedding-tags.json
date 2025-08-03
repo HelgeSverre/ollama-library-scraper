@@ -1,0 +1,47 @@
+[
+  {
+    "name": "latest",
+    "size": "63MB",
+    "digest": "eb4c533ba6f7",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30m",
+    "size": "63MB",
+    "digest": "eb4c533ba6f7",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text",
+    "aliases": [
+      "latest"
+    ]
+  },
+  {
+    "name": "278m",
+    "size": "563MB",
+    "digest": "1a37926bf842",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30m-en",
+    "size": "63MB",
+    "digest": "eb4c533ba6f7",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30m-en-fp16",
+    "size": "63MB",
+    "digest": "eb4c533ba6f7",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "278m-fp16",
+    "size": "563MB",
+    "digest": "1a37926bf842",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  }
+]

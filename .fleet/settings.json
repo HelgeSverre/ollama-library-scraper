@@ -1,0 +1,41 @@
+{
+  "typescript": {
+    "enableTypeCheck": true,
+    "tsconfig": "tsconfig.json"
+  },
+  "testing": {
+    "framework": "vitest",
+    "testFiles": ["**/*.test.ts", "**/*.spec.ts"],
+    "testDirectory": "src/__tests__"
+  },
+  "formatting": {
+    "prettier": {
+      "enabled": true,
+      "configPath": ".prettierrc"
+    }
+  },
+  "npm": {
+    "packageManager": "npm"
+  },
+  "git": {
+    "enableGitIntegration": true
+  },
+  "editor": {
+    "formatOnSave": true,
+    "tabSize": 2,
+    "insertSpaces": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    ".git"
+  ],
+  "fileWatching": {
+    "exclude": [
+      "**/node_modules/**",
+      "**/dist/**", 
+      "**/coverage/**"
+    ]
+  }
+}

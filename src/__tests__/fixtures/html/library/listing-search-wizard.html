@@ -1,0 +1,859 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html class="h-full overflow-y-scroll">
+  <head>
+    <title>library</title>
+
+    <meta charset="utf-8" />
+    <meta name="description" content="Browse Ollama's library of models."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="library" />
+    <meta property="og:description" content="Browse Ollama's library of models." />
+    <meta property="og:url" content="https://ollama.com/library" />
+    <meta property="og:image" content="https://ollama.com/public/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type" content="website" />
+
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="library" />
+    <meta property="twitter:description" content="Browse Ollama's library of models." />
+    <meta property="twitter:site" content="ollama" />
+
+    <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
+    <meta property="twitter:image:width" content="1200" />
+    <meta property="twitter:image:height" content="628" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/public/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/public/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/public/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/public/android-chrome-icon-512x512.png" />
+
+    
+    
+
+    <link href="/public/tailwind.css?v=7fe42bd001ef62a0c6d6ef8ae157462d" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ollama",
+        "url": "https://ollama.com"
+      }
+    </script>
+
+    <script type="text/javascript">
+      function copyToClipboard(element) {
+        let commandElement = null;
+        const preElement = element.closest('pre');
+        const languageNoneElement = element.closest('.language-none');
+
+        if (preElement) {
+          commandElement = preElement.querySelector('code');
+        } else if (languageNoneElement) {
+          commandElement = languageNoneElement.querySelector('.command');
+        } else {
+          const parent = element.parentElement;
+          if (parent) {
+            commandElement = parent.querySelector('.command');
+          }
+        }
+
+        if (!commandElement) {
+          console.error('No code or command element found');
+          return;
+        }
+
+        const code = commandElement.textContent ? commandElement.textContent.trim() : commandElement.value;
+
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            const copyIcon = element.querySelector('.copy-icon')
+            const checkIcon = element.querySelector('.check-icon')
+
+            copyIcon.classList.add('hidden')
+            checkIcon.classList.remove('hidden')
+
+            setTimeout(() => {
+              copyIcon.classList.remove('hidden')
+              checkIcon.classList.add('hidden')
+            }, 2000)
+          })
+      }
+    </script>
+    
+    <script>
+      
+      function getIcon(url) {
+        url = url.toLowerCase();
+        if (url.includes('x.com') || url.includes('twitter.com')) return 'x';
+        if (url.includes('github.com')) return 'github';
+        if (url.includes('linkedin.com')) return 'linkedin';
+        if (url.includes('youtube.com')) return 'youtube';
+        if (url.includes('hf.co') || url.includes('huggingface.co') || url.includes('huggingface.com')) return 'hugging-face';
+        return 'default';
+      }
+
+      function setInputIcon(input) {
+        const icon = getIcon(input.value);
+        const img = input.previousElementSibling.querySelector('img');
+        img.src = `/public/social/${icon}.svg`;
+        img.alt = `${icon} icon`;
+      }
+
+      function setDisplayIcon(imgElement, url) {
+        const icon = getIcon(url);
+        imgElement.src = `/public/social/${icon}.svg`;
+        imgElement.alt = `${icon} icon`;
+      }
+    </script>
+    
+    <script src="/public/vendor/htmx/bundle.js"></script>
+    
+  </head>
+
+  <body
+    class="
+      antialiased
+      min-h-screen
+      w-full
+      m-0
+      flex
+      flex-col
+    "
+    hx-on:keydown="
+      if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+        // Ignore key events in input fields.
+        return;
+      }
+      if ((event.metaKey && event.key === 'k') || event.key === '/') {
+        event.preventDefault();
+        const sp = htmx.find('#search') || htmx.find('#navbar-input');
+        sp.focus();
+      }
+    "
+  >
+      
+<header class="sticky top-0 z-40 bg-white underline-offset-4 lg:static">
+  <nav class="flex w-full items-center justify-between px-6 py-3.5">
+    <a href="/" class="z-50">
+      <img src="/public/ollama.png" class="w-8" alt="Ollama" />
+    </a>
+    
+    
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" target="_blank" href="https://discord.com/invite/ollama">Discord</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" target="_blank" href="https://github.com/ollama/ollama">GitHub</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/models">Models</a>
+    </div>
+
+    
+    <div class="flex-grow justify-center items-center hidden lg:flex xl:-ml-8">
+      <div class="relative w-full xl:max-w-[28rem]">
+        
+<form action="/search" autocomplete="off">
+  <div 
+    class="relative flex w-full appearance-none bg-black/5 border border-neutral-100 items-center rounded-full"
+    hx-on:focusout="
+      if (!this.contains(event.relatedTarget)) {
+        const searchPreview = document.querySelector('#searchpreview');
+        if (searchPreview) {
+          htmx.addClass('#searchpreview', 'hidden');
+        }
+      }
+    "
+  >
+  <span id="searchIcon" class="pl-2 text-2xl text-neutral-500">
+    <svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" />
+    </svg>
+  </span>
+  <input
+    id="search"
+    hx-get="/search"
+    hx-trigger="keyup changed delay:100ms, focus"
+    hx-target="#searchpreview"
+    hx-swap="innerHTML"
+    name="q"
+    class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 focus:outline-none focus:ring-0"
+    placeholder="Search models"
+    autocomplete="off"
+    hx-on:keydown="
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        window.location.href = '/search?q=' + encodeURIComponent(this.value);
+        return;
+      }
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        this.value = '';
+        this.blur();
+        htmx.addClass('#searchpreview', 'hidden');
+        return;
+      }
+      if (event.key === 'Tab') { 
+        htmx.addClass('#searchpreview', 'hidden');
+        return;
+      }
+      if (event.key === 'ArrowDown') {
+        let first = document.querySelector('#search-preview-list a:first-of-type');
+        first?.focus();
+        event.preventDefault();
+      }
+      if (event.key === 'ArrowUp') {
+        let last = document.querySelector('#view-all-link');
+        last?.focus();
+        event.preventDefault();
+      }
+      htmx.removeClass('#searchpreview', 'hidden');
+    "
+    hx-on:focus="
+      htmx.removeClass('#searchpreview', 'hidden')
+    "
+  />
+</form>
+<div id="searchpreview" class="hidden absolute left-0 right-0 top-12 z-50" style="width: calc(100% + 2px); margin-left: -1px;"></div>
+</div>
+
+      </div>
+    </div>
+
+    
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
+      
+        <a class="flex cursor-pointer items-center rounded-full bg-white border border-neutral-300 text-lg px-4 py-1 text-black hover:bg-neutral-50 whitespace-nowrap focus:bg-neutral-50" href="/signin">Sign in</a>
+        <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 text-lg px-4 py-1 text-white hover:bg-black whitespace-nowrap focus:bg-black" href="/download">Download</a>
+      
+    </div>
+    
+    
+    <div class="lg:hidden flex items-center">
+      <input type="checkbox" id="menu" class="peer hidden" />
+      <label for="menu" class="z-50 cursor-pointer peer-checked:hidden block">
+        <svg
+          class="h-8 w-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+      </label>
+      <label for="menu" class="z-50 cursor-pointer hidden peer-checked:block fixed top-4 right-6">
+        <svg
+          class="h-8 w-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </label>
+      
+      <div class="fixed inset-0 bg-white z-40 hidden peer-checked:block overflow-y-auto">
+        <div class="flex flex-col space-y-5 pt-[5.5rem] text-3xl">
+          
+          <a class="px-6" href="/models">Models</a>
+          <a class="px-6" href="https://discord.com/invite/ollama">Discord</a>
+          <a class="px-6" href="https://github.com/ollama/ollama">GitHub</a>
+
+          
+
+          
+          <a class="px-6" href="/download">Download</a>
+          <a href="/signin" class="block px-6">Sign in</a>
+          
+
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="flex-grow">
+      
+
+
+<div class="flex flex-1 justify-center">
+  <main class="mx-auto flex w-full max-w-2xl flex-col px-6 py-5 md:py-12 lg:px-8">
+    <div class="grid grid-cols-4 gap-4 md:gap-0">
+      <div class="col-span-1">
+        <div class="flex w-20 flex-col items-center md:w-28">
+          <div class="group relative h-20 w-20 overflow-hidden rounded-full md:h-28 md:w-28">
+            <img
+              id="profileImg"
+              src="/public/assets/c889cc0d-cb83-4c46-a98e-0d0e273151b9/42f6b28d-9117-48cd-ac0d-44baaf5c178e.png"
+              alt="profile"
+              class="absolute inset-0 h-full w-full border border-neutral-300 object-cover indent-[-9999px] rounded-full"
+            />
+            
+          </div>
+        </div>      
+      </div>
+      <div class="col-span-3">
+        <div class="flex flex-grow flex-col">
+          <div class="flex flex-row items-center justify-between">
+            <span x-test-namespace class="text-[28px] font-medium tracking-tight capitalize">library</span>
+  
+            
+          </div>
+          <div class="space-y-1">
+            <div class="my-2">
+              <h2 class="break-words sm:max-w-lg">
+                
+                  
+                
+              </h2>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pt-6 pb-4">
+      <div class="flex space-x-1">
+        <form
+          hx-get="/library"
+          hx-target="#repo"
+          hx-trigger="submit, keyup changed delay:100ms from:[name=q], change from:select"
+          hx-on::after-request="
+            const url = new URL(window.location);
+            const filterEl = document.getElementById('filter');
+            const sortEl = document.getElementById('sort');
+      
+            if (filterEl.value !== '') {
+              url.searchParams.set('q', filterEl.value);
+            } else {
+              url.searchParams.delete('q');
+            }
+      
+            if (sortEl.value !== '') {
+              url.searchParams.set('sort', sortEl.value);
+            } else {
+              url.searchParams.delete('sort');
+            }
+      
+            history.pushState({}, '', url.toString());"
+          class="flex w-full justify-end"
+        >
+          <div class="flex items-center space-x-1 w-full sm:w-auto">
+            <input
+              id="filter"
+              name="q"
+              type="text"
+              value="wizard"
+              class="w-full sm:w-48 px-4 py-1.5 resize-none rounded-md border border-neutral-200 text-sm focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-75"
+              placeholder="Filter models"
+              autocomplete="off"
+            />
+          
+            <select
+              name="sort"
+              id="sort"
+              class="inset-0 w-6 h-[34px] px-3.5 py-1.5
+                appearance-none cursor-pointer rounded-lg
+                border border-neutral-200 bg-white text-neutral-900
+                hover:bg-neutral-50 focus:outline-none
+                static min-w-[120px] text-sm"
+              hx-on:change="htmx.trigger(this.form, 'submit')"
+            >
+              <option disabled value="">Sort By</option>
+              
+                <option value="popular" >Popular</option>
+              
+                <option value="newest" >Newest</option>
+              
+            </select>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+    
+
+<div x-test-repos id="repo">
+  <ul role="list" class="grid grid-cols-1 gap-y-3">
+    
+    <li x-test-model class="flex items-baseline border-b border-neutral-200 py-6">
+      <a href="/library/wizardlm2" class="group w-full space-y-5">
+        <div x-test-model-title title="wizardlm2" class="flex flex-col">
+          <h2 class="truncate text-xl font-medium underline-offset-2 md:text-2xl">
+            <div class="flex space-x-2 items-center">
+              <span class="group-hover:underline truncate">wizardlm2</span>
+              
+            </div>
+          </h2>
+          <p class="max-w-lg break-words text-neutral-800 text-md">State of the art large language model from Microsoft AI with improved performance on complex chat, multilingual, reasoning and agent use cases.</p>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <div class="flex flex-wrap space-x-2">
+            
+            
+            
+            
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">7b</span>
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">8x22b</span>
+            
+          </div>
+          <p class="my-4 flex space-x-5 text-[13px] font-medium text-neutral-500">
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path>
+                </svg>
+                <span x-test-pull-count>386.8K</span>
+                <span class="hidden sm:flex">&nbsp;Pulls</span>
+              </span>
+            
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                </svg>
+                <span x-test-tag-count>22</span>
+                <span class="hidden sm:flex">&nbsp;Tags</span>
+              </span>
+            
+            
+              <span class="flex items-center" title="Apr 16, 2024 12:46 AM UTC">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                </svg>
+                <span class="hidden sm:flex">Updated&nbsp;</span>
+                <span x-test-updated>1 year ago</span>
+              </span>
+            
+          </p>
+        </div>
+      </a>
+    </li>
+    
+    <li x-test-model class="flex items-baseline border-b border-neutral-200 py-6">
+      <a href="/library/wizard-vicuna-uncensored" class="group w-full space-y-5">
+        <div x-test-model-title title="wizard-vicuna-uncensored" class="flex flex-col">
+          <h2 class="truncate text-xl font-medium underline-offset-2 md:text-2xl">
+            <div class="flex space-x-2 items-center">
+              <span class="group-hover:underline truncate">wizard-vicuna-uncensored</span>
+              
+            </div>
+          </h2>
+          <p class="max-w-lg break-words text-neutral-800 text-md">Wizard Vicuna Uncensored is a 7B, 13B, and 30B parameter model based on Llama 2 uncensored by Eric Hartford.</p>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <div class="flex flex-wrap space-x-2">
+            
+            
+            
+            
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">7b</span>
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">13b</span>
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">30b</span>
+            
+          </div>
+          <p class="my-4 flex space-x-5 text-[13px] font-medium text-neutral-500">
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path>
+                </svg>
+                <span x-test-pull-count>224.4K</span>
+                <span class="hidden sm:flex">&nbsp;Pulls</span>
+              </span>
+            
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                </svg>
+                <span x-test-tag-count>49</span>
+                <span class="hidden sm:flex">&nbsp;Tags</span>
+              </span>
+            
+            
+              <span class="flex items-center" title="Oct 28, 2023 5:20 PM UTC">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                </svg>
+                <span class="hidden sm:flex">Updated&nbsp;</span>
+                <span x-test-updated>1 year ago</span>
+              </span>
+            
+          </p>
+        </div>
+      </a>
+    </li>
+    
+    <li x-test-model class="flex items-baseline border-b border-neutral-200 py-6">
+      <a href="/library/wizardcoder" class="group w-full space-y-5">
+        <div x-test-model-title title="wizardcoder" class="flex flex-col">
+          <h2 class="truncate text-xl font-medium underline-offset-2 md:text-2xl">
+            <div class="flex space-x-2 items-center">
+              <span class="group-hover:underline truncate">wizardcoder</span>
+              
+            </div>
+          </h2>
+          <p class="max-w-lg break-words text-neutral-800 text-md">State-of-the-art code generation model</p>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <div class="flex flex-wrap space-x-2">
+            
+            
+            
+            
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">33b</span>
+            
+          </div>
+          <p class="my-4 flex space-x-5 text-[13px] font-medium text-neutral-500">
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path>
+                </svg>
+                <span x-test-pull-count>133K</span>
+                <span class="hidden sm:flex">&nbsp;Pulls</span>
+              </span>
+            
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                </svg>
+                <span x-test-tag-count>67</span>
+                <span class="hidden sm:flex">&nbsp;Tags</span>
+              </span>
+            
+            
+              <span class="flex items-center" title="Jan 5, 2024 5:09 AM UTC">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                </svg>
+                <span class="hidden sm:flex">Updated&nbsp;</span>
+                <span x-test-updated>1 year ago</span>
+              </span>
+            
+          </p>
+        </div>
+      </a>
+    </li>
+    
+    <li x-test-model class="flex items-baseline border-b border-neutral-200 py-6">
+      <a href="/library/wizard-math" class="group w-full space-y-5">
+        <div x-test-model-title title="wizard-math" class="flex flex-col">
+          <h2 class="truncate text-xl font-medium underline-offset-2 md:text-2xl">
+            <div class="flex space-x-2 items-center">
+              <span class="group-hover:underline truncate">wizard-math</span>
+              
+            </div>
+          </h2>
+          <p class="max-w-lg break-words text-neutral-800 text-md">Model focused on math and logic problems</p>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <div class="flex flex-wrap space-x-2">
+            
+            
+            
+            
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">7b</span>
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">13b</span>
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">70b</span>
+            
+          </div>
+          <p class="my-4 flex space-x-5 text-[13px] font-medium text-neutral-500">
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path>
+                </svg>
+                <span x-test-pull-count>109K</span>
+                <span class="hidden sm:flex">&nbsp;Pulls</span>
+              </span>
+            
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                </svg>
+                <span x-test-tag-count>64</span>
+                <span class="hidden sm:flex">&nbsp;Tags</span>
+              </span>
+            
+            
+              <span class="flex items-center" title="Dec 19, 2023 4:02 PM UTC">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                </svg>
+                <span class="hidden sm:flex">Updated&nbsp;</span>
+                <span x-test-updated>1 year ago</span>
+              </span>
+            
+          </p>
+        </div>
+      </a>
+    </li>
+    
+    <li x-test-model class="flex items-baseline border-b border-neutral-200 py-6">
+      <a href="/library/wizardlm" class="group w-full space-y-5">
+        <div x-test-model-title title="wizardlm" class="flex flex-col">
+          <h2 class="truncate text-xl font-medium underline-offset-2 md:text-2xl">
+            <div class="flex space-x-2 items-center">
+              <span class="group-hover:underline truncate">wizardlm</span>
+              
+            </div>
+          </h2>
+          <p class="max-w-lg break-words text-neutral-800 text-md">General use model based on Llama 2.</p>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <div class="flex flex-wrap space-x-2">
+            
+            
+            
+            
+            
+          </div>
+          <p class="my-4 flex space-x-5 text-[13px] font-medium text-neutral-500">
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path>
+                </svg>
+                <span x-test-pull-count>77.7K</span>
+                <span class="hidden sm:flex">&nbsp;Pulls</span>
+              </span>
+            
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                </svg>
+                <span x-test-tag-count>73</span>
+                <span class="hidden sm:flex">&nbsp;Tags</span>
+              </span>
+            
+            
+              <span class="flex items-center" title="Oct 30, 2023 2:54 AM UTC">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                </svg>
+                <span class="hidden sm:flex">Updated&nbsp;</span>
+                <span x-test-updated>1 year ago</span>
+              </span>
+            
+          </p>
+        </div>
+      </a>
+    </li>
+    
+    <li x-test-model class="flex items-baseline border-b border-neutral-200 py-6">
+      <a href="/library/wizardlm-uncensored" class="group w-full space-y-5">
+        <div x-test-model-title title="wizardlm-uncensored" class="flex flex-col">
+          <h2 class="truncate text-xl font-medium underline-offset-2 md:text-2xl">
+            <div class="flex space-x-2 items-center">
+              <span class="group-hover:underline truncate">wizardlm-uncensored</span>
+              
+            </div>
+          </h2>
+          <p class="max-w-lg break-words text-neutral-800 text-md">Uncensored version of Wizard LM model </p>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <div class="flex flex-wrap space-x-2">
+            
+            
+            
+            
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">13b</span>
+            
+          </div>
+          <p class="my-4 flex space-x-5 text-[13px] font-medium text-neutral-500">
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path>
+                </svg>
+                <span x-test-pull-count>72.9K</span>
+                <span class="hidden sm:flex">&nbsp;Pulls</span>
+              </span>
+            
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                </svg>
+                <span x-test-tag-count>18</span>
+                <span class="hidden sm:flex">&nbsp;Tags</span>
+              </span>
+            
+            
+              <span class="flex items-center" title="Oct 28, 2023 3:29 PM UTC">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                </svg>
+                <span class="hidden sm:flex">Updated&nbsp;</span>
+                <span x-test-updated>1 year ago</span>
+              </span>
+            
+          </p>
+        </div>
+      </a>
+    </li>
+    
+    <li x-test-model class="flex items-baseline border-b border-neutral-200 py-6">
+      <a href="/library/wizard-vicuna" class="group w-full space-y-5">
+        <div x-test-model-title title="wizard-vicuna" class="flex flex-col">
+          <h2 class="truncate text-xl font-medium underline-offset-2 md:text-2xl">
+            <div class="flex space-x-2 items-center">
+              <span class="group-hover:underline truncate">wizard-vicuna</span>
+              
+            </div>
+          </h2>
+          <p class="max-w-lg break-words text-neutral-800 text-md">Wizard Vicuna is a 13B parameter model based on Llama 2 trained by MelodysDreamj.</p>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <div class="flex flex-wrap space-x-2">
+            
+            
+            
+            
+            
+              <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] px-2 py-0.5 text-xs font-medium text-blue-600 sm:text-[13px]">13b</span>
+            
+          </div>
+          <p class="my-4 flex space-x-5 text-[13px] font-medium text-neutral-500">
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path>
+                </svg>
+                <span x-test-pull-count>33.6K</span>
+                <span class="hidden sm:flex">&nbsp;Pulls</span>
+              </span>
+            
+            
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                </svg>
+                <span x-test-tag-count>17</span>
+                <span class="hidden sm:flex">&nbsp;Tags</span>
+              </span>
+            
+            
+              <span class="flex items-center" title="Oct 28, 2023 7:41 PM UTC">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                </svg>
+                <span class="hidden sm:flex">Updated&nbsp;</span>
+                <span x-test-updated>1 year ago</span>
+              </span>
+            
+          </p>
+        </div>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+  </main>
+</div>
+
+    </main>
+
+    
+<footer class="mt-auto">
+  <div class="bg-white underline-offset-4 hidden md:block">
+    <div class="flex items-center justify-between px-6 py-3.5">
+      <div class="text-xs text-neutral-500">© 2025 Ollama</div>
+      <div class="flex space-x-6 text-xs text-neutral-500">
+        <a href="/blog" class="hover:underline">Blog</a>
+        <a href="https://github.com/ollama/ollama/tree/main/docs" class="hover:underline">Docs</a>
+        <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
+        <a href="https://discord.com/invite/ollama" class="hover:underline">Discord</a>
+        <a href="https://twitter.com/ollama" class="hover:underline">X (Twitter)</a>
+        <a href="https://lu.ma/ollama" class="hover:underline">Meetups</a>
+        <a href="/download" class="hover:underline">Download</a>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white py-4 md:hidden">
+    <div class="flex flex-col items-center justify-center">
+      <ul class="flex flex-wrap items-center justify-center text-sm text-neutral-500">
+        <li class="mx-2 my-1">
+          <a href="/blog" class="hover:underline">Blog</a>
+        </li>
+        <li class="mx-2 my-1">
+          <a href="/download" class="hover:underline">Download</a>
+        </li>
+        <li class="mx-2 my-1">
+          <a href="https://github.com/ollama/ollama/tree/main/docs" class="hover:underline">Docs</a>
+        </li>
+      </ul>
+      <ul class="flex flex-wrap items-center justify-center text-sm text-neutral-500">
+        <li class="mx-2 my-1">
+          <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
+        </li>
+        <li class="mx-2 my-1">
+          <a href="https://discord.com/invite/ollama" class="hover:underline">Discord</a>
+        </li>
+        <li class="mx-2 my-1">
+          <a href="https://twitter.com/ollama" class="hover:underline">X (Twitter)</a>
+        </li>
+        <li class="mx-2 my-1">
+          <a href="https://lu.ma/ollama" class="hover:underline">Meetups</a>
+        </li>
+      </ul>
+      <div class="mt-2 flex items-center justify-center text-sm text-neutral-500">
+        © 2025 Ollama Inc.
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    
+    <span class="hidden" id="end_of_template"></span>
+  </body>
+</html>

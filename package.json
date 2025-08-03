@@ -1,0 +1,99 @@
+{
+  "name": "ollama-library-scraper",
+  "version": "1.0.0",
+  "description": "A TypeScript library for scraping model information from the Ollama model library website. Extract details, tags, and metadata from ollama.com/library with a simple, type-safe API.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/ollama-scraper.ts",
+    "start": "node dist/ollama-scraper.js",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest watch",
+    "prepublishOnly": "npm run build && npm run test:core",
+    "test:core": "vitest run --exclude='**/*.performance.test.ts' --exclude='**/*.edge-cases.test.ts'",
+    "fixtures:generate": "ts-node src/scripts/generate-fixtures.ts",
+    "fixtures:generate:library": "ts-node src/scripts/generate-fixtures.ts --category=library",
+    "fixtures:generate:models": "ts-node src/scripts/generate-fixtures.ts --category=models",
+    "fixtures:update": "ts-node src/scripts/generate-fixtures.ts --update",
+    "fixtures:list": "ts-node src/scripts/generate-fixtures.ts --list",
+    "test:fixtures": "npm run fixtures:generate && npm test",
+    "format": "prettier --write \"src/**/*.ts\" \"*.json\" \"*.md\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"*.json\" \"*.md\"",
+    "lint": "npm run format:check",
+    "prepack": "npm run build && npm run test",
+    "publish:dry": "npm publish --dry-run",
+    "clean": "rm -rf dist coverage",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major",
+    "release:patch": "npm run version:patch && git push --follow-tags",
+    "release:minor": "npm run version:minor && git push --follow-tags",
+    "release:major": "npm run version:major && git push --follow-tags",
+    "test:local": "./scripts/test-workflows-local.sh ci",
+    "test:local:full": "./scripts/test-workflows-local.sh ci-full",
+    "test:local:validate": "./scripts/test-workflows-local.sh validate",
+    "test:local:clean": "./scripts/test-workflows-local.sh clean",
+    "docker:build": "docker build -t ollama-library-scraper:test --target test -f Dockerfile.test .",
+    "docker:test": "docker run --rm -v $(pwd)/coverage:/app/coverage ollama-library-scraper:test"
+  },
+  "keywords": [
+    "ollama",
+    "scraper",
+    "web-scraping",
+    "typescript",
+    "machine-learning",
+    "ai",
+    "models",
+    "llm",
+    "language-models",
+    "model-library",
+    "api",
+    "cheerio",
+    "html-parsing",
+    "data-extraction"
+  ],
+  "author": {
+    "name": "helgesverre",
+    "url": "https://github.com/helgesverre"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/helgesverre/ollama-library-scraper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/helgesverre/ollama-library-scraper/issues"
+  },
+  "homepage": "https://github.com/helgesverre/ollama-library-scraper#readme",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "cheerio": "^1.1.2",
+    "node-fetch": "^2.7.0",
+    "turndown": "^7.2.0",
+    "turndown-plugin-gfm": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@types/node": "^20.19.9",
+    "@types/node-fetch": "^2.6.13",
+    "@types/turndown": "^5.0.5",
+    "@vitest/coverage-v8": "^3.2.4",
+    "msw": "^2.10.4",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

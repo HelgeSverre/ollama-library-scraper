@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+
+# Test coverage
+coverage/
+
+# Fixtures (don't format HTML fixtures)
+src/__tests__/fixtures/html/
+
+# Package files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS
+.DS_Store

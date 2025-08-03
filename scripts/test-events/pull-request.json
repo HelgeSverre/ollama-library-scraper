@@ -1,0 +1,34 @@
+{
+  "action": "opened",
+  "number": 1,
+  "pull_request": {
+    "number": 1,
+    "state": "open",
+    "title": "Test PR for local testing",
+    "user": {
+      "login": "helgesverre",
+      "type": "User"
+    },
+    "body": "This is a test pull request for local workflow testing",
+    "head": {
+      "ref": "feature/test-branch",
+      "sha": "abc123def456"
+    },
+    "base": {
+      "ref": "main",
+      "sha": "def456abc123"
+    }
+  },
+  "repository": {
+    "name": "ollama-library-scraper",
+    "full_name": "helgesverre/ollama-library-scraper",
+    "owner": {
+      "login": "helgesverre",
+      "type": "User"
+    }
+  },
+  "sender": {
+    "login": "helgesverre",
+    "type": "User"
+  }
+}

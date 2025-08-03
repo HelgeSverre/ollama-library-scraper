@@ -1,0 +1,41 @@
+# Source code (only dist is needed)
+src/
+*.ts
+!*.d.ts
+
+# Test files
+**/__tests__
+**/*.test.*
+**/*.spec.*
+vitest.config.ts
+coverage/
+
+# Development files
+.vscode/
+.idea/
+*.log
+*.tgz
+
+# Configuration files
+tsconfig.json
+.prettierrc
+.eslintrc*
+
+# Git files
+.git/
+.gitignore
+
+# Documentation source
+docs/
+
+# Example files
+examples/
+
+# macOS
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Build artifacts not needed
+*.map

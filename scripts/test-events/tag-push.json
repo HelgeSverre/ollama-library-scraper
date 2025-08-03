@@ -1,0 +1,20 @@
+{
+  "ref": "refs/tags/v1.0.1",
+  "ref_type": "tag",
+  "repository": {
+    "name": "ollama-library-scraper",
+    "full_name": "helgesverre/ollama-library-scraper",
+    "owner": {
+      "login": "helgesverre",
+      "type": "User"
+    }
+  },
+  "pusher": {
+    "name": "helgesverre",
+    "email": "user@example.com"
+  },
+  "created": true,
+  "deleted": false,
+  "forced": false,
+  "commits": []
+}

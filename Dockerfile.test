@@ -1,0 +1,89 @@
+# Multi-stage Dockerfile for testing workflows locally
+# This provides an alternative to act for testing in a controlled environment
+
+ARG NODE_VERSION=20
+
+# Base stage with Node.js
+FROM node:${NODE_VERSION}-alpine AS base
+
+# Install system dependencies
+RUN apk add --no-cache \
+    git \
+    bash \
+    curl \
+    && rm -rf /var/cache/apk/*
+
+WORKDIR /app
+
+# Dependencies stage
+FROM base AS deps
+
+# Copy package files
+COPY package*.json ./
+COPY yarn.lock* ./
+
+# Install dependencies
+RUN npm ci --only=production && \
+    npm cache clean --force
+
+# Development dependencies stage
+FROM base AS dev-deps
+
+# Copy package files
+COPY package*.json ./
+COPY yarn.lock* ./
+
+# Install all dependencies (including dev)
+RUN npm ci && \
+    npm cache clean --force
+
+# Build stage
+FROM dev-deps AS build
+
+# Copy source code
+COPY . .
+
+# Build the project
+RUN npm run build
+
+# Test stage - replicates CI environment
+FROM dev-deps AS test
+
+# Copy source code and built assets
+COPY . .
+COPY --from=build /app/dist ./dist
+
+# Set environment variables for testing
+ENV NODE_ENV=test
+ENV CI=true
+ENV COVERAGE_ENABLED=true
+
+# Create coverage directory
+RUN mkdir -p coverage
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD node --version || exit 1
+
+# Default command runs the full test suite
+CMD ["npm", "run", "test:coverage"]
+
+# Production stage
+FROM base AS production
+
+# Copy only production dependencies
+COPY --from=deps /app/node_modules ./node_modules
+
+# Copy built application
+COPY --from=build /app/dist ./dist
+COPY package*.json ./
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S ollama -u 1001 -G nodejs
+
+USER ollama
+
+EXPOSE 3000
+
+CMD ["node", "dist/index.js"]

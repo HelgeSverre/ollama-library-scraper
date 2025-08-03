@@ -1,0 +1,28 @@
+{
+  "name": "granite-embedding",
+  "description": "The IBM Granite Embedding 30M and 278M models models are text-only dense biencoder embedding models, with 30M available in English only and 278M serving multilingual use cases.",
+  "downloads": "0",
+  "lastUpdated": "TIMESTAMP_PLACEHOLDER",
+  "readmeHtml": "<h2>Granite embedding models</h2>\n\n<p>The IBM Granite Embedding <strong>30M and 278M models</strong> are text-only dense biencoder embedding models, with <strong>30M</strong> available in English only and <strong>278M</strong> serving multilingual use cases. These models are designed to produce fixed length vector representations for a given text chunk, which can be used for text similarity, retrieval, and search applications.</p>\n\n<h3>Parameter Sizes</h3>\n\n<p><strong>30M:</strong></p>\n\n<p><code>ollama run granite-embedding:30m</code></p>\n\n<p><strong>278M:</strong></p>\n\n<p><code>ollama run granite-embedding:278m</code></p>\n\n<h3>Supported Languages</h3>\n\n<p><strong>30M:</strong> English\n<strong>278M:</strong> English, German, Spanish, French, Japanese, Portuguese, Arabic, Czech, Italian, Korean, Dutch, Chinese (Simplified)</p>\n\n<h2>Granite dense models</h2>\n\n<p>The Granite dense models are available in <strong>2B and 8B</strong> parameter sizes designed to support tool-based use cases and for retrieval augmented generation (RAG), streamlining code generation, translation and bug fixing.</p>\n\n<p><a href=\"https://ollama.com/library/granite3-dense\" rel=\"nofollow\">See model page</a></p>\n\n<h2>Granite mixture of experts models</h2>\n\n<p>The Granite mixture of experts models are available in <strong>1B and 3B</strong> parameter sizes designed for <strong>low latency usage</strong>.</p>\n\n<p><a href=\"https://ollama.com/library/granite3-moe\" rel=\"nofollow\">See model page</a></p>\n\n<h2>Learn more</h2>\n\n<ul>\n<li><strong>Developers:</strong> IBM Research</li>\n<li><strong>GitHub Repository:</strong> <a href=\"https://github.com/ibm-granite/granite-3.1-language-models\" rel=\"nofollow\">ibm-granite/granite-language-models</a></li>\n<li><strong>Website</strong>: <a href=\"https://www.ibm.com/granite/docs/\" rel=\"nofollow\">Granite Docs</a></li>\n<li><strong>Release Date</strong>: December 18th, 2024</li>\n<li><strong>License:</strong> <a href=\"https://www.apache.org/licenses/LICENSE-2.0\" rel=\"nofollow\">Apache 2.0</a>.</li>\n</ul>",
+  "readmeMarkdown": "## Granite embedding models\n\nThe IBM Granite Embedding **30M and 278M models** are text-only dense biencoder embedding models, with **30M** available in English only and **278M** serving multilingual use cases. These models are designed to produce fixed length vector representations for a given text chunk, which can be used for text similarity, retrieval, and search applications.\n\n### Parameter Sizes\n\n**30M:**\n\n`ollama run granite-embedding:30m`\n\n**278M:**\n\n`ollama run granite-embedding:278m`\n\n### Supported Languages\n\n**30M:** English **278M:** English, German, Spanish, French, Japanese, Portuguese, Arabic, Czech, Italian, Korean, Dutch, Chinese (Simplified)\n\n## Granite dense models\n\nThe Granite dense models are available in **2B and 8B** parameter sizes designed to support tool-based use cases and for retrieval augmented generation (RAG), streamlining code generation, translation and bug fixing.\n\n[See model page](https://ollama.com/library/granite3-dense)\n\n## Granite mixture of experts models\n\nThe Granite mixture of experts models are available in **1B and 3B** parameter sizes designed for **low latency usage**.\n\n[See model page](https://ollama.com/library/granite3-moe)\n\n## Learn more\n\n-   **Developers:** IBM Research\n-   **GitHub Repository:** [ibm-granite/granite-language-models](https://github.com/ibm-granite/granite-3.1-language-models)\n-   **Website**: [Granite Docs](https://www.ibm.com/granite/docs/)\n-   **Release Date**: December 18th, 2024\n-   **License:** [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).",
+  "models": [
+    {
+      "name": "latest",
+      "size": "63MB",
+      "inputType": "Text",
+      "lastUpdated": ""
+    },
+    {
+      "name": "30m",
+      "size": "63MB",
+      "inputType": "Text",
+      "lastUpdated": ""
+    },
+    {
+      "name": "278m",
+      "size": "63MB",
+      "inputType": "Text",
+      "lastUpdated": ""
+    }
+  ]
+}

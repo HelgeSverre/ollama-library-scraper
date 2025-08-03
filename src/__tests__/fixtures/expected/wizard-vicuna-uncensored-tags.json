@@ -1,0 +1,348 @@
+[
+  {
+    "name": "latest",
+    "size": "3.8GB",
+    "digest": "72fc3c2b99dc",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b",
+    "size": "3.8GB",
+    "digest": "72fc3c2b99dc",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text",
+    "aliases": [
+      "latest"
+    ]
+  },
+  {
+    "name": "13b",
+    "size": "7.4GB",
+    "digest": "6887722b6618",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b",
+    "size": "18GB",
+    "digest": "5a7102e25304",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q2_K",
+    "size": "2.8GB",
+    "digest": "63f9ff49339b",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q3_K_S",
+    "size": "2.9GB",
+    "digest": "6b39ccbb5718",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q3_K_M",
+    "size": "3.3GB",
+    "digest": "68169e9e5f14",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q3_K_L",
+    "size": "3.6GB",
+    "digest": "3695bfa5c6db",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q4_0",
+    "size": "3.8GB",
+    "digest": "72fc3c2b99dc",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q4_1",
+    "size": "4.2GB",
+    "digest": "f4ff0dd82563",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q4_K_S",
+    "size": "3.9GB",
+    "digest": "877e9af2494f",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q4_K_M",
+    "size": "4.1GB",
+    "digest": "0b79dc5d70ec",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q5_0",
+    "size": "4.7GB",
+    "digest": "2613174e3296",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q5_1",
+    "size": "5.1GB",
+    "digest": "b20c27fda6cf",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q5_K_S",
+    "size": "4.7GB",
+    "digest": "9b60f8559ec9",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q5_K_M",
+    "size": "4.8GB",
+    "digest": "ea26b4c246fb",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q6_K",
+    "size": "5.5GB",
+    "digest": "3c7046c51a44",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-q8_0",
+    "size": "7.2GB",
+    "digest": "011a3d16558a",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "7b-fp16",
+    "size": "13GB",
+    "digest": "c8eb2106d1e8",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q2_K",
+    "size": "5.4GB",
+    "digest": "f4f91109c207",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q3_K_S",
+    "size": "5.7GB",
+    "digest": "b5832103bdeb",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q3_K_M",
+    "size": "6.3GB",
+    "digest": "ed4a273d6b6d",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q3_K_L",
+    "size": "6.9GB",
+    "digest": "88fb403b8c6a",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q4_0",
+    "size": "7.4GB",
+    "digest": "6887722b6618",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q4_1",
+    "size": "8.2GB",
+    "digest": "7455a677d914",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q4_K_S",
+    "size": "7.4GB",
+    "digest": "709c6745f467",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q4_K_M",
+    "size": "7.9GB",
+    "digest": "e42ad99d49f7",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q5_0",
+    "size": "9.0GB",
+    "digest": "dafb313b8b5b",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q5_1",
+    "size": "9.8GB",
+    "digest": "1154aba9bebb",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q5_K_S",
+    "size": "9.0GB",
+    "digest": "be4967133cc3",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q5_K_M",
+    "size": "9.2GB",
+    "digest": "8b5821845aa5",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q6_K",
+    "size": "11GB",
+    "digest": "9df4c914f6e7",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-q8_0",
+    "size": "14GB",
+    "digest": "2823c1701714",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "13b-fp16",
+    "size": "26GB",
+    "digest": "23b4a7186107",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q2_K",
+    "size": "14GB",
+    "digest": "2812ef4f45ba",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q3_K_S",
+    "size": "14GB",
+    "digest": "8db4e5c26e07",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q3_K_M",
+    "size": "16GB",
+    "digest": "9a867b52eb8c",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q3_K_L",
+    "size": "17GB",
+    "digest": "05a7d357be60",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q4_0",
+    "size": "18GB",
+    "digest": "5a7102e25304",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q4_1",
+    "size": "20GB",
+    "digest": "80bbe0a037ad",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q4_K_S",
+    "size": "18GB",
+    "digest": "6c0f7c7f3fed",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q4_K_M",
+    "size": "20GB",
+    "digest": "acddabb57909",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q5_0",
+    "size": "22GB",
+    "digest": "cffb3de32667",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q5_1",
+    "size": "24GB",
+    "digest": "74065a3909bd",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q5_K_S",
+    "size": "22GB",
+    "digest": "fdeaf5e7d150",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q5_K_M",
+    "size": "23GB",
+    "digest": "abcb5f233465",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q6_K",
+    "size": "27GB",
+    "digest": "4943a7ffa702",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-q8_0",
+    "size": "35GB",
+    "digest": "89ccedd7789e",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "30b-fp16",
+    "size": "65GB",
+    "digest": "bed611752f1a",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  }
+]

@@ -1,0 +1,168 @@
+{
+  "configurations": [
+    {
+      "name": "Debug Tests",
+      "type": "node",
+      "programParameters": "run --reporter=verbose",
+      "program": "node_modules/vitest/vitest.mjs",
+      "workingDirectory": "$PROJECT_DIR$",
+      "envs": {
+        "NODE_ENV": "test"
+      },
+      "envFile": ".env"
+    },
+    {
+      "name": "Debug Current Test File",
+      "type": "node", 
+      "programParameters": "run $FILE_PATH$ --reporter=verbose",
+      "program": "node_modules/vitest/vitest.mjs",
+      "workingDirectory": "$PROJECT_DIR$",
+      "envs": {
+        "NODE_ENV": "test"
+      },
+      "envFile": ".env"
+    },
+    {
+      "name": "Run Scraper",
+      "type": "node",
+      "program": "src/ollama-scraper.ts",
+      "workingDirectory": "$PROJECT_DIR$",
+      "options": ["-r", "ts-node/register"],
+      "envFile": ".env"
+    },
+    {
+      "name": "Run Scraper (Development)",
+      "type": "npm",
+      "command": "dev",
+      "workingDirectory": "$PROJECT_DIR$",
+      "envFile": ".env"
+    },
+    {
+      "name": "Run Scraper (Built)",
+      "type": "npm", 
+      "command": "start",
+      "workingDirectory": "$PROJECT_DIR$",
+      "envFile": ".env"
+    },
+    {
+      "name": "Build Project",
+      "type": "npm",
+      "command": "build",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Test Suite",
+      "type": "npm",
+      "command": "test",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Test with Coverage",
+      "type": "npm",
+      "command": "test:coverage", 
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Watch Tests",
+      "type": "npm",
+      "command": "test:watch",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Core Tests Only",
+      "type": "npm",
+      "command": "test:core",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Format Code",
+      "type": "npm",
+      "command": "format",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Check Formatting",
+      "type": "npm",
+      "command": "format:check",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Generate Fixtures",
+      "type": "npm",
+      "command": "fixtures:generate",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Generate Library Fixtures",
+      "type": "npm",
+      "command": "fixtures:generate:library",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Generate Model Fixtures", 
+      "type": "npm",
+      "command": "fixtures:generate:models",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Update Fixtures",
+      "type": "npm",
+      "command": "fixtures:update",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "List Fixtures",
+      "type": "npm",
+      "command": "fixtures:list",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Test with Fresh Fixtures",
+      "type": "npm",
+      "command": "test:fixtures",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Clean Build Artifacts",
+      "type": "npm",
+      "command": "clean",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Test Local CI",
+      "type": "npm",
+      "command": "test:local",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Test Local CI (Full)",
+      "type": "npm",
+      "command": "test:local:full",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Validate Workflows",
+      "type": "npm",
+      "command": "test:local:validate",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Docker Build",
+      "type": "npm",
+      "command": "docker:build",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Docker Test",
+      "type": "npm",
+      "command": "docker:test",
+      "workingDirectory": "$PROJECT_DIR$"
+    },
+    {
+      "name": "Dry Run Publish",
+      "type": "npm",
+      "command": "publish:dry",
+      "workingDirectory": "$PROJECT_DIR$"
+    }
+  ]
+}

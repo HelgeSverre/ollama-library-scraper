@@ -1,0 +1,40 @@
+[
+  {
+    "name": "latest",
+    "size": "14GB",
+    "digest": "27bcbbf6d324",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "24b",
+    "size": "14GB",
+    "digest": "27bcbbf6d324",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text",
+    "aliases": [
+      "latest"
+    ]
+  },
+  {
+    "name": "24b-small-2506-q4_K_M",
+    "size": "14GB",
+    "digest": "27bcbbf6d324",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "24b-small-2506-q8_0",
+    "size": "25GB",
+    "digest": "02423f83f1a1",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  },
+  {
+    "name": "24b-small-2506-fp16",
+    "size": "47GB",
+    "digest": "0a0e2be3b6c4",
+    "modifiedAt": "TIMESTAMP_PLACEHOLDER",
+    "inputType": "Text"
+  }
+]

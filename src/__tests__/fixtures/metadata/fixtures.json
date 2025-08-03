@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-08-03T09:47:04.497Z",
+  "fixtures": {
+    "library/listing-newest.html": {
+      "url": "https://ollama.com/library?sort=newest",
+      "fetchedAt": "2025-08-03T09:46:45.707Z",
+      "description": "Library listing sorted by newest"
+    },
+    "library/listing-popular.html": {
+      "url": "https://ollama.com/library?sort=most-popular",
+      "fetchedAt": "2025-08-03T09:46:47.630Z",
+      "description": "Library listing sorted by most popular"
+    },
+    "library/listing-search-wizard.html": {
+      "url": "https://ollama.com/library?q=wizard",
+      "fetchedAt": "2025-08-03T09:46:49.096Z",
+      "description": "Search results for \"wizard\""
+    },
+    "library/listing-search-no-results.html": {
+      "url": "https://ollama.com/library?q=xyzabc123notfound",
+      "fetchedAt": "2025-08-03T09:46:50.600Z",
+      "description": "Empty search results"
+    },
+    "models/magistral/details.html": {
+      "url": "https://ollama.com/library/magistral",
+      "fetchedAt": "2025-08-03T09:46:51.972Z",
+      "description": "Magistral model details"
+    },
+    "models/magistral/tags.html": {
+      "url": "https://ollama.com/library/magistral/tags",
+      "fetchedAt": "2025-08-03T09:46:53.165Z",
+      "description": "Magistral model tags"
+    },
+    "models/granite-embedding/details.html": {
+      "url": "https://ollama.com/library/granite-embedding",
+      "fetchedAt": "2025-08-03T09:46:54.497Z",
+      "description": "Granite embedding model details"
+    },
+    "models/granite-embedding/tags.html": {
+      "url": "https://ollama.com/library/granite-embedding/tags",
+      "fetchedAt": "2025-08-03T09:46:55.646Z",
+      "description": "Granite embedding model tags"
+    },
+    "models/wizard-math/details.html": {
+      "url": "https://ollama.com/library/wizard-math",
+      "fetchedAt": "2025-08-03T09:46:56.807Z",
+      "description": "Wizard Math model details"
+    },
+    "models/wizard-math/tags.html": {
+      "url": "https://ollama.com/library/wizard-math/tags",
+      "fetchedAt": "2025-08-03T09:46:58.202Z",
+      "description": "Wizard Math model tags"
+    },
+    "models/wizard-vicuna-uncensored/details.html": {
+      "url": "https://ollama.com/library/wizard-vicuna-uncensored",
+      "fetchedAt": "2025-08-03T09:46:59.361Z",
+      "description": "Wizard Vicuna Uncensored model details"
+    },
+    "models/wizard-vicuna-uncensored/tags.html": {
+      "url": "https://ollama.com/library/wizard-vicuna-uncensored/tags",
+      "fetchedAt": "2025-08-03T09:47:00.718Z",
+      "description": "Wizard Vicuna Uncensored model tags"
+    },
+    "models/wizard-vicuna-uncensored/variants/13b-q4_K_M.html": {
+      "url": "https://ollama.com/library/wizard-vicuna-uncensored:13b-q4_K_M",
+      "fetchedAt": "2025-08-03T09:47:01.900Z",
+      "description": "Wizard Vicuna Uncensored 13b-q4_K_M variant"
+    },
+    "models/wizard-vicuna-uncensored/variants/13b-q8_0.html": {
+      "url": "https://ollama.com/library/wizard-vicuna-uncensored:13b-q8_0",
+      "fetchedAt": "2025-08-03T09:47:03.264Z",
+      "description": "Wizard Vicuna Uncensored 13b-q8_0 variant"
+    },
+    "models/wizard-vicuna-uncensored/variants/latest.html": {
+      "url": "https://ollama.com/library/wizard-vicuna-uncensored:latest",
+      "fetchedAt": "2025-08-03T09:47:04.497Z",
+      "description": "Wizard Vicuna Uncensored latest variant"
+    }
+  }
+}
