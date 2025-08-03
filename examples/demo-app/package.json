@@ -12,7 +12,11 @@
     "cors": "^2.8.5",
     "ollama-library-scraper": "file:../"
   },
-  "keywords": ["ollama", "demo", "web-app"],
+  "keywords": [
+    "ollama",
+    "demo",
+    "web-app"
+  ],
   "author": "Demo",
   "license": "MIT"
 }

@@ -20,31 +20,31 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/api/models', async (req, res) => {
   try {
     const { q: query, sort = 'most-popular' } = req.query;
-    
+
     console.log(`Fetching models - Query: "${query || 'all'}", Sort: ${sort}`);
-    
+
     const options = {
-      sort: sort
+      sort: sort,
     };
-    
+
     if (query) {
       options.query = query;
     }
-    
+
     const models = await scraper.getModelListing(options);
-    
+
     console.log(`Found ${models.length} models`);
-    
+
     res.json({
       success: true,
       count: models.length,
-      models: models
+      models: models,
     });
   } catch (error) {
     console.error('Error fetching models:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -54,20 +54,20 @@ app.get('/api/models/:name', async (req, res) => {
   try {
     const { name } = req.params;
     const { tag } = req.query;
-    
+
     console.log(`Fetching details for model: ${name}${tag ? ` (tag: ${tag})` : ''}`);
-    
+
     const details = await scraper.getModelDetails(name, tag);
-    
+
     res.json({
       success: true,
-      details: details
+      details: details,
     });
   } catch (error) {
     console.error(`Error fetching details for ${req.params.name}:`, error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -76,21 +76,21 @@ app.get('/api/models/:name', async (req, res) => {
 app.get('/api/models/:name/tags', async (req, res) => {
   try {
     const { name } = req.params;
-    
+
     console.log(`Fetching tags for model: ${name}`);
-    
+
     const tags = await scraper.getModelTags(name);
-    
+
     res.json({
       success: true,
       count: tags.length,
-      tags: tags
+      tags: tags,
     });
   } catch (error) {
     console.error(`Error fetching tags for ${req.params.name}:`, error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -100,7 +100,7 @@ app.get('/api/health', (req, res) => {
   res.json({
     success: true,
     message: 'Ollama Demo API is running',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 

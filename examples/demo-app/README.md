@@ -35,16 +35,19 @@ The demo includes a REST API that showcases all package features:
 ## Example Usage
 
 ### Search for code models
+
 ```
 GET /api/models?q=code&sort=most-popular
 ```
 
 ### Get details for a specific model
+
 ```
 GET /api/models/llama3.1
 ```
 
 ### Get all tags for a model
+
 ```
 GET /api/models/qwen3-coder/tags
 ```
@@ -67,7 +70,7 @@ const scraper = new OllamaScraper();
 // Search models
 const models = await scraper.getModelListing({
   query: 'llama',
-  sort: 'most-popular'
+  sort: 'most-popular',
 });
 
 // Get model details
