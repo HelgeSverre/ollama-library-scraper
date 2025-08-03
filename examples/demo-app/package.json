@@ -1,0 +1,18 @@
+{
+  "name": "ollama-demo-app",
+  "version": "1.0.0",
+  "description": "Demo web application using ollama-library-scraper",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "ollama-library-scraper": "file:../"
+  },
+  "keywords": ["ollama", "demo", "web-app"],
+  "author": "Demo",
+  "license": "MIT"
+}
