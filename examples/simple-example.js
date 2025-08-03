@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Simple Example - Quick Template
  *

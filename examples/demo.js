@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Ollama Library Scraper Demo
  *
