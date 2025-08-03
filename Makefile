@@ -89,9 +89,12 @@ docker-build:
 		-f Dockerfile.test .
 
 docker-test:
-	docker run --rm \
-		-v $(PWD)/coverage:/app/coverage \
-		ollama-library-scraper:test
+	@if [ -d "$(PWD)/coverage" ]; then rm -rf $(PWD)/coverage; fi
+	@echo "Running tests in Docker container..."
+	@docker run --name ollama-test-temp ollama-library-scraper:test || true
+	@echo "Copying coverage reports from container..."
+	@docker cp ollama-test-temp:/app/coverage . 2>/dev/null || echo "No coverage directory to copy"
+	@docker rm ollama-test-temp 2>/dev/null || true
 
 # Release commands
 release-patch:

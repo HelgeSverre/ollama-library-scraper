@@ -1,6 +1,7 @@
 # Ollama Library Scraper
 
 [![npm version](https://badge.fury.io/js/ollama-library-scraper.svg)](https://badge.fury.io/js/ollama-library-scraper)
+[![CI](https://github.com/helgesverre/ollama-library-scraper/workflows/CI/badge.svg)](https://github.com/helgesverre/ollama-library-scraper/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 
@@ -54,7 +55,7 @@ pnpm add ollama-library-scraper
 - 🔍 **Search & Filter**: Search models and filter by various criteria
 - 🏷️ **Tag Support**: Get detailed information about model variants and tags
 - ⚡ **Performance**: Optimized for speed with intelligent parsing
-- 🧪 **Well-Tested**: Comprehensive test suite with 80+ tests and high coverage
+- 🧪 **Well-Tested**: Comprehensive test suite with 250+ tests and high coverage
 - 📖 **Great DX**: Excellent developer experience with clear documentation
 
 ## 🔧 Usage
@@ -285,6 +286,9 @@ npm run dev
 - `npm test` - Run tests
 - `npm run test:watch` - Run tests in watch mode
 - `npm run test:coverage` - Run tests with coverage report
+- `npm run format` - Format all code files with Prettier
+- `npm run format:check` - Check code formatting
+- `npm run lint` - Run linting and formatting checks
 
 ### Testing
 
