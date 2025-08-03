@@ -75,5 +75,8 @@ jobs:
     - name: Check for outdated packages
       run: npm outdated || true
     
+    - name: Build project
+      run: npm run build
+      
     - name: Validate package
-      run: npm run publish:dry
+      run: npm publish --dry-run --ignore-scripts
