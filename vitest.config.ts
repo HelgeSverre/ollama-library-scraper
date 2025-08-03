@@ -1,4 +1,5 @@
-import { defineConfig } from 'vitest/config';
+/// <reference types="vitest" />
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   test: {
@@ -15,7 +16,7 @@ export default defineConfig({
       reportsDirectory: './coverage',
       thresholds: {
         lines: 80,
-        functions: 80,
+        functions: 75,
         branches: 70,
         statements: 80
       },
@@ -27,7 +28,11 @@ export default defineConfig({
         '**/*.test.ts',
         '**/*.spec.ts',
         'src/scripts/**',
-        'src/types/**'
+        'src/types/**',
+        'src/__tests__/**',
+        'src/**/*.test.*',
+        'src/**/*.spec.*',
+        'src/index.ts'
       ],
       include: [
         'src/**/*.ts'

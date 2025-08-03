@@ -25,7 +25,8 @@
       "Bash(touch:*)",
       "Bash(npm run test:ci:*)",
       "Bash(make test-local-ci:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }
