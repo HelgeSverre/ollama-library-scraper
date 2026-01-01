@@ -126,6 +126,6 @@ logs
 .env.production.local
 
 # Package manager lock files (keep one, comment out others as needed)
-# package-lock.json
+package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
