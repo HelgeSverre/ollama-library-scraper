@@ -1,9 +1,9 @@
 # Ollama Library Scraper
 
-[![npm version](https://badge.fury.io/js/ollama-library-scraper.svg)](https://badge.fury.io/js/ollama-library-scraper)
-[![CI](https://github.com/helgesverre/ollama-library-scraper/workflows/CI/badge.svg)](https://github.com/helgesverre/ollama-library-scraper/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![npm version](https://badge.fury.io/js/ollama-library-scraper.svg?v=20260101)](https://badge.fury.io/js/ollama-library-scraper)
+[![CI](https://github.com/helgesverre/ollama-library-scraper/workflows/CI/badge.svg?v=20260101)](https://github.com/helgesverre/ollama-library-scraper/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?v=20260101)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg?v=20260101)](https://www.typescriptlang.org/)
 
 Programmatically access Ollama's model library with a type-safe TypeScript API. Search models, extract metadata, compare variants, and retrieve download statistics—no HTML parsing required.
 
