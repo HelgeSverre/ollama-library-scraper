@@ -9,7 +9,7 @@ Programmatically access Ollama's model library with a type-safe TypeScript API. 
 
 ## Installation
 
-```bash
+```shell
 npm install ollama-library-scraper
 yarn add ollama-library-scraper
 pnpm add ollama-library-scraper
@@ -241,7 +241,7 @@ type SortOption = 'newest' | 'most-popular' | 'oldest' | 'alphabetical';
 
 ### Setup
 
-```bash
+```shell
 # Clone the repository
 git clone https://github.com/helgesverre/ollama-library-scraper.git
 cd ollama-library-scraper
@@ -268,7 +268,7 @@ npm run dev
 
 The project uses Vitest for testing. Tests mock the HTTP requests to avoid hitting the actual website during testing.
 
-```bash
+```shell
 # Run tests
 npm test
 
