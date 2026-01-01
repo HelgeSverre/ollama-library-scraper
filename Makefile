@@ -1,6 +1,6 @@
 # Ollama Library Scraper - Local Development and Testing
 
-.PHONY: help install test build lint format clean test-local-* docker-*
+.PHONY: help install test build lint format clean act-* docker-*
 
 # Default target
 help:
@@ -16,14 +16,14 @@ help:
 	@echo "  format               Format code"
 	@echo "  clean                Clean build artifacts"
 	@echo ""
-	@echo "Local GitHub Actions Testing:"
-	@echo "  test-local-check     Check if act and Docker are installed"
-	@echo "  test-local-ci        Test CI workflow locally (fast)"
-	@echo "  test-local-ci-full   Test CI workflow with all Node.js versions"
-	@echo "  test-local-release   Test release workflow (dry-run)"
-	@echo "  test-local-deps      Test dependency review workflow"
-	@echo "  test-local-validate  Validate workflow syntax"
-	@echo "  test-local-clean     Clean up local testing artifacts"
+	@echo "Local GitHub Actions Testing (using act):"
+	@echo "  act-check            Check if act and Docker are installed"
+	@echo "  act-ci               Test CI workflow locally (fast)"
+	@echo "  act-ci-full          Test CI workflow with all Node.js versions"
+	@echo "  act-release          Test release workflow (dry-run)"
+	@echo "  act-deps             Test dependency review workflow"
+	@echo "  act-validate         Validate workflow syntax"
+	@echo "  act-clean            Clean up local testing artifacts"
 	@echo ""
 	@echo "Docker:"
 	@echo "  docker-build         Build Docker image for testing"
@@ -59,26 +59,26 @@ format:
 clean:
 	npm run clean
 
-# Local GitHub Actions testing commands
-test-local-check:
+# Local GitHub Actions testing commands (using act)
+act-check:
 	@./scripts/test-workflows-local.sh check
 
-test-local-ci:
+act-ci:
 	@./scripts/test-workflows-local.sh ci
 
-test-local-ci-full:
+act-ci-full:
 	@./scripts/test-workflows-local.sh ci-full
 
-test-local-release:
+act-release:
 	@./scripts/test-workflows-local.sh release
 
-test-local-deps:
+act-deps:
 	@./scripts/test-workflows-local.sh deps
 
-test-local-validate:
+act-validate:
 	@./scripts/test-workflows-local.sh validate
 
-test-local-clean:
+act-clean:
 	@./scripts/test-workflows-local.sh clean
 
 # Docker commands for containerized testing
@@ -107,6 +107,6 @@ release-major:
 	npm run release:major
 
 # Convenience targets
-ci-local: test-local-ci
-validate: test-local-validate
-test-all: test test-local-ci
+ci-local: act-ci
+validate: act-validate
+test-all: test act-ci
