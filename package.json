@@ -1,6 +1,6 @@
 {
   "name": "ollama-library-scraper",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A TypeScript library for scraping model information from the Ollama model library website. Extract details, tags, and metadata from ollama.com/library with a simple, type-safe API.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
