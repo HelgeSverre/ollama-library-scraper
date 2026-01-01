@@ -5,13 +5,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 
-A TypeScript/Node.js library for extracting model information from the Ollama library website. Get structured data about AI models, their variants, tags, and metadata with a simple, type-safe API.
+Programmatically access Ollama's model library with a type-safe TypeScript API. Search models, extract metadata, compare variants, and retrieve download statistics—no HTML parsing required.
 
-## 🚀 Quick Start
+## Installation
 
 ```bash
 npm install ollama-library-scraper
+yarn add ollama-library-scraper
+pnpm add ollama-library-scraper
+bun add ollama-library-scraper
 ```
+
+## Quick Start
 
 ```typescript
 import { OllamaScraper } from 'ollama-library-scraper';
@@ -27,38 +32,7 @@ const details = await scraper.getModelDetails('llama3.1');
 console.log(details);
 ```
 
-## 📦 Installation
-
-### npm
-
-```bash
-npm install ollama-library-scraper
-```
-
-### yarn
-
-```bash
-yarn add ollama-library-scraper
-```
-
-### pnpm
-
-```bash
-pnpm add ollama-library-scraper
-```
-
-## ✨ Features
-
-- 🎯 **Type-Safe**: Full TypeScript support with comprehensive type definitions
-- 🚀 **Simple API**: Easy-to-use methods for common operations
-- 📊 **Comprehensive Data**: Extract model details, tags, capabilities, and metadata
-- 🔍 **Search & Filter**: Search models and filter by various criteria
-- 🏷️ **Tag Support**: Get detailed information about model variants and tags
-- ⚡ **Performance**: Optimized for speed with intelligent parsing
-- 🧪 **Well-Tested**: Comprehensive test suite with 250+ tests and high coverage
-- 📖 **Great DX**: Excellent developer experience with clear documentation
-
-## 🔧 Usage
+## Usage
 
 ### Basic Usage
 
@@ -116,7 +90,7 @@ const toolsModels = (await scraper.getModelListing()).filter(model =>
 );
 ```
 
-### 🌟 Real-World Examples
+### Real-World Examples
 
 #### Find the most popular code models
 
@@ -169,7 +143,7 @@ async function recommendModels(userQuery: string) {
 const recommendations = await recommendModels('chat');
 ```
 
-## 📚 API Reference
+## API Reference
 
 ### OllamaScraper Class
 
@@ -314,13 +288,23 @@ try {
 }
 ```
 
-## Notes
+## Why Use This Library?
 
-- The scraper uses Cheerio for HTML parsing, which is fast and jQuery-like
-- All methods are async and return Promises
-- The scraper handles malformed HTML gracefully
-- Rate limiting is not implemented - be respectful of the server
-- The scraper extracts data from the HTML structure of ollama.com, which may change over time
+- **Avoid Manual HTML Parsing** - Pre-built selectors and parsing logic
+- **Type Safety** - Full TypeScript definitions prevent runtime errors
+- **Maintained** - Regularly updated to match ollama.com structure changes
+- **Well Tested** - Comprehensive test suite ensures reliability
+- **Simple API** - Three main methods cover all use cases
+- **Framework Agnostic** - Works with any Node.js framework or runtime
+- **No Official API** - Ollama doesn't provide an API for their model library; this is the only programmatic way to access it
+
+## Important Notes
+
+- ⚠️ **No Rate Limiting**: Implement your own delays to be respectful of ollama.com servers
+- 🔄 **HTML Changes**: The scraper depends on ollama.com's HTML structure, which may change
+- 📦 **No Caching**: Each call makes a fresh HTTP request - implement caching if needed
+- 🌐 **Network Required**: All methods require internet connectivity
+- 🛡️ **Error Handling**: Always wrap calls in try-catch blocks for production use
 
 ## Contributing
 
@@ -334,14 +318,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Author
-
-helgesverre
-
-## Links
-
-- [Repository](https://github.com/helgesverre/ollama-library-scraper)
-- [Issues](https://github.com/helgesverre/ollama-library-scraper/issues)
-- [npm Package](https://www.npmjs.com/package/ollama-library-scraper)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
